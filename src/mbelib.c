@@ -6,9 +6,8 @@ extern "C" {
 void retrn( const char *buffer, int in_size, short int * result)
 {
     struct ir77_ambe_decoder *dec = NULL;
-    int is_wave = 0, l, rv;
     int frames_ok = 0, frames_total = 0;
-    float error_ratio = 1.0f;
+
     int outputsize = in_size - in_size/40;
     char * buf;
     buf = (char *)calloc(outputsize,sizeof(char));;
@@ -25,7 +24,7 @@ void retrn( const char *buffer, int in_size, short int * result)
     }
     
     /* Process all frames */
-    l = 0;
+
     int counterec = 0;
 
     for (int k = 0; k < outputsize - 39; k += 39)
@@ -34,7 +33,7 @@ void retrn( const char *buffer, int in_size, short int * result)
         uint8_t superframe[39];
         short int audio[2 * 360];
         int rv, i;
-        int hui = 0;
+
         for (int j = 0; j < 39; j++)
         {
             superframe[j] = (uint8_t)buf[k + j];
