@@ -6,7 +6,7 @@
 
 %{
 #include <iostream>
-#include "iridium.h"
+#include "native/iridium.h"
 %}
 
 %apply signed char[] { const char *  };
@@ -14,8 +14,8 @@
 
 %pragma(java) jniclasscode=%{
     static {
-        System.loadLibrary("iridium");
+        boolean embeddedLibrary = EmbeddedLibraryTools.LOADED_EMBEDDED_LIBRARY;
     }
 %}
 
-%include "iridium.h"
+%include "native/iridium.h"

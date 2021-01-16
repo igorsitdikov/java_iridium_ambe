@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package l2m.lissen2me;
+package l2m.decoder.iridium;
 
 public class Iridium {
   private transient long swigCPtr;

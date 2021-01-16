@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'l2m.decoder'
+version '1.0.0'
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'l2m.decoder.iridium.Main'
+        )
+    }
+    baseName 'iridium'
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) })
+}
+
+task compile(type: Exec) {
+    commandLine 'make'
+}
