@@ -34,7 +34,7 @@ public class EmbeddedLibraryTools {
     public static String[] defineLibs() {
         String osName = System.getProperty("os.name");
         if (osName.toLowerCase().contains("windows")) {
-            return new String[]{"libiridium.dll"};
+            return new String[]{"libwinpthread-1.dll", "libgcc_s_seh-1.dll", "libstdc++-6.dll", "libiridium.dll"};
         } else if (osName.toLowerCase().contains("mac os x")) {
             return new String[]{};
         } else {
