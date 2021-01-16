@@ -48,6 +48,8 @@ copy:
 	mkdir -p $(OUTPUT_PATH)
 	strip -g $(TARGET)
 	cp $(TARGET) $(OUTPUT_PATH)
+	chmod +x copy_dependencies.sh
+	./copy_dependencies.sh $(TARGET) $(OUTPUT_PATH)
 
 $(TARGET): native/iridium.cpp iridium_wrap.cpp native/mbelib.h libambe.a
 	g++ -std=c++11 $(CFLAGS) -shared -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/$(JAVA_OS)  -o $@ $^ -L. -lambe $(LDLIBS)
