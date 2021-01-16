@@ -25,8 +25,8 @@ public class Main {
         int outSize = inSize / 39 * 720 * 2;
         byte[] result = new byte[outSize];
 
-        Iridium ir = new Iridium();
-        ir.to_decode(input, inSize, result, outSize);
+        Iridium iridium = new Iridium();
+        iridium.decode(input, inSize, result, outSize);
 
         byte[] bytes = PCMHelper.PCM2Wave(result, 1, 8000, 16);
         dos.write(bytes);

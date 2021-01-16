@@ -1,11 +1,10 @@
 *.o
 *_wrap.cpp
-*.so
 .idea
 *.a
-resources
 target
 build
 .wav
 .iml
 gradle
+.gradle

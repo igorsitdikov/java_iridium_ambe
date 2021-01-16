@@ -16,5 +16,5 @@ public class iridiumAmbeJNI {
 
   public final static native long new_Iridium();
   public final static native void delete_Iridium(long jarg1);
-  public final static native void Iridium_to_decode(long jarg1, Iridium jarg1_, byte[] jarg2, int jarg3, byte[] jarg4, int jarg5);
+  public final static native void Iridium_decode(long jarg1, Iridium jarg1_, byte[] jarg2, int jarg3, byte[] jarg4, int jarg5);
 }

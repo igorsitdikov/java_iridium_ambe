@@ -8,14 +8,16 @@ CFLAGS+=`pkg-config libosmocore --cflags` -DHAVE_LIBOSMOCORE
 LDLIBS+=`pkg-config libosmocore --libs`
 endif
 
+LIB_NAME := libiridium
+
 ifeq ($(OS),Windows_NT)
-	TARGET := libiridium.dll
+	TARGET := $(LIB_NAME).dll
 	JAVA_OS := win32
 	ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
 		OS_PATH := amd64/Windows
 	endif
 else
-    TARGET := libiridium.so
+    TARGET := $(LIB_NAME).so
 	JAVA_OS := linux
 	UNAME_S := $(shell uname -s)
 	UNAME_P := $(shell uname -p)
@@ -26,7 +28,6 @@ else
 	endif
 endif
 
-BUILD_DIR = $(PWD)
 JAVA_HOME = /usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 OUTPUT_PATH := src/main/resources/NATIVE/$(OS_PATH)/
@@ -49,7 +50,7 @@ copy:
 	cp $(TARGET) $(OUTPUT_PATH)
 
 $(TARGET): native/iridium.cpp iridium_wrap.cpp native/mbelib.h libambe.a
-	g++ -std=c++11 $(CFLAGS) -shared -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux  -o $@ $^ -L. -lambe $(LDLIBS)
+	g++ -std=c++11 $(CFLAGS) -shared -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/$(JAVA_OS)  -o $@ $^ -L. -lambe $(LDLIBS)
 
 libambe.a: $(SOURCES:.c=.o)
 	ar -cvq $@ $^

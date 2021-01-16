@@ -39,8 +39,8 @@ public class Iridium {
     this(iridiumAmbeJNI.new_Iridium(), true);
   }
 
-  public void to_decode(byte[] input, int in_size, byte[] output, int out_size) {
-    iridiumAmbeJNI.Iridium_to_decode(swigCPtr, this, input, in_size, output, out_size);
+  public void decode(byte[] input, int in_size, byte[] output, int out_size) {
+    iridiumAmbeJNI.Iridium_decode(swigCPtr, this, input, in_size, output, out_size);
   }
 
 }
